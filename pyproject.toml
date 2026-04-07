@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "resume"
+version = "0.1.0"
+description = "AI Resume Reviewer & Improver"
+dependencies = []
+
+[project.scripts]
+# Expose the Gradio Blocks object `app` as the project script Vercel looks for
+app = "app:app"
