@@ -1,7 +1,7 @@
 # AI Resume Reviewer & Improver
 
 ## Overview
-This project is an advanced AI-powered multi-agent application that evaluates, scores, and rewrites resumes to meet professional industry standards. It uses OpenAI's models to iteratively improve a candidate's resume, providing a rich Side-by-Side comparison UI, live feedback scoring, and an interactive chat interface to refine targeted resume sections.
+This project is an advanced AI-powered multi-agent application that evaluates, scores, and rewrites resumes to meet professional industry standards. It uses Google's Gemini models to iteratively improve a candidate's resume, providing a rich Side-by-Side comparison UI, live feedback scoring, and an interactive chat interface to refine targeted resume sections.
 
 ## System Architecture
 
@@ -12,12 +12,12 @@ graph TD
     C -->|Store Original| D[memory.py / SessionMemory]
     
     B -->|Analyze Request| E(ResumeAnalyzerAgent)
-    E -->|Evaluate & Score| F[OpenAI API GPT-4o-mini]
+    E -->|Evaluate & Score| F[Google Gemini API]
     F -->|Analysis Results| D
     
     B -->|Improve Request| G(ImprovementAgent)
     D -->|Context: Original + Analysis| G
-    G -->|Rewrite Resume| H[OpenAI API GPT-4o]
+    G -->|Rewrite Resume| H[Google Gemini API]
     H -->|Revised Version| D
     
     D -->|Display Side-by-Side| B
@@ -37,12 +37,24 @@ graph TD
    ```bash
    pip install -r requirements.txt
    ```
-4. Set your OpenAI API key as an environment variable:
-   - On Windows: `set OPENAI_API_KEY=your_key_here`
-   - On Mac/Linux: `export OPENAI_API_KEY=your_key_here`
+4. Set your Gemini API key as an environment variable:
+   - On Windows: `set GEMINI_API_KEY=your_key_here`
+   - On Mac/Linux: `export GEMINI_API_KEY=your_key_here`
+
+## Hugging Face Spaces Deployment
+
+This application is built with Gradio and is best deployed on **Hugging Face Spaces**.
+
+1. Create a new Space on Hugging Face (Select `Gradio` as the SDK).
+2. Upload the contents of this repository to your Space.
+3. In your Space's Settings, go to **Variables and secrets**.
+4. Add a new secret:
+   - **Name:** `GEMINI_API_KEY`
+   - **Value:** Your actual Gemini API key.
+5. The Space will automatically build and run `app.py`.
 
 ## Usage Guide
-Run the main web application:
+Run the main web application locally:
 ```bash
 python app.py
 ```
