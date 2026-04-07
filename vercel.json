@@ -1,0 +1,13 @@
+{
+  "build": {
+    "env": {},
+    "commands": {
+      "build": "python -m pip install -r requirements.txt"
+    }
+  },
+  "functions": {
+    "*.py": {
+      "runtime": "python3.11"
+    }
+  }
+}
