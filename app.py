@@ -162,8 +162,8 @@ def export_files(session_state):
     if not session_state.current_resume:
         return None
         
-    pdf_path = "improved_resume.pdf"
-    docx_path = "improved_resume.docx"
+    pdf_path = f"improved_resume_{session_state.session_id}.pdf"
+    docx_path = f"improved_resume_{session_state.session_id}.docx"
     export_to_pdf(session_state.current_resume, pdf_path)
     export_to_docx(session_state.current_resume, docx_path)
     
